@@ -21,5 +21,17 @@ def create_user(data: user.User, db: Session):
     return user
 
 
+def delete_user(id: int, db: Session):
+    user = db.query().filter(User.id==id).delete()
+    db.commit()
+    return user
 
 
+def update_user(data: user.User, db: Session, id: int):
+    user = db.query(User).filter(User.id==id).first()
+    user.name = data.name
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+
+    return user
