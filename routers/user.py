@@ -19,7 +19,7 @@ async def get_user(id: str=None, db: Session = Depends(get_db_connection)):
 
 
 @router.delete(path='/{id}', tags=['user'])
-async  def delete_usser(id: int = None, db: Session = Depends(get_db_connection)):
+async def delete_user(id: int = None, db: Session = Depends(get_db_connection)):
     return user_service.delete_user(id, db)
 
 
